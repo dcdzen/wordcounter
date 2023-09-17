@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <title>Word Counter</title>
+  </head>
+  <body>
+    <header>
+      <a href="https://codenamedcd.github.io/"> <i class="fa fa-arrow-left" aria-hidden="true"></i> back </a>
+      <p>Word Counter</p>
+    </header>
+    <form action="" method="POST">
+      <section>
+        <p>
+          Word:
+          <span id="word" onchange="getInput()">n</span> <br />
+          Character:
+          <span id="char" onchange="getInput()">n</span>
+          <br />
+          <span class="info">Click Everywhere After Input</span>
+        </p>
+        <div>
+          <button class="clear" onclick="copyInput()"><i class="fa fa-trash" aria-hidden="true"></i> clear</button>
+          <button class="copy" onclick="copyInput()"><i class="fa fa-clipboard" aria-hidden="true"></i> copy</button>
+        </div>
+        <textarea id="subject" name="subject" placeholder="Paste here..." onblur="getInput()"></textarea>
+      </section>
+    </form>
+
+    <script src="main.js"></script>
+  </body>
+</html>

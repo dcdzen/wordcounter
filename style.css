@@ -1,0 +1,121 @@
+:root {
+  --toodark: #373231;
+  --dark: #433e3d;
+  --semidark: #56514f;
+  --light: #f5f5f5;
+  --primary: #51b9eb;
+}
+
+body {
+  background-color: var(--toodark);
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  margin: 2rem 20rem;
+}
+
+p,
+a {
+  color: var(--primary);
+  text-align: center;
+  margin: 0;
+}
+a {
+  border: none;
+  text-decoration: none;
+}
+header {
+  display: flex;
+  margin: 0 0 1rem 0;
+  gap: 1rem;
+  align-items: center;
+  justify-content: space-between;
+}
+header a,
+header p {
+  background-color: var(--dark);
+  padding: 15px 20px;
+  border-radius: 12px;
+  font-weight: bold;
+  width: 50%;
+  text-transform: uppercase;
+
+  transition: all 0.2s ease-in-out;
+}
+header a {
+  background-color: var(--primary);
+  color: var(--dark);
+}
+header a:hover {
+  opacity: 0.5;
+}
+
+section {
+  border-radius: 12px;
+  background-color: var(--dark);
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  position: relative;
+  padding: 1rem;
+}
+
+section p {
+  font-size: 2rem;
+  padding: 20px;
+  font-weight: bold;
+  line-height: 36px;
+}
+.info {
+  color: var(--light);
+  font-size: 14px;
+}
+section div {
+  background-color: var(--light);
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  display: flex;
+  overflow: hidden;
+}
+section button {
+  text-align: center;
+  align-items: center;
+  padding: 0.8rem;
+  outline: none;
+  border: none;
+  background-color: var(--light);
+  color: var(--toodark);
+  cursor: pointer;
+}
+section button:hover {
+  background-color: var(--primary);
+}
+
+textarea {
+  min-height: 100px;
+  padding: 1rem;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  width: 100%;
+  resize: vertical;
+  box-sizing: border-box;
+  border: 4px solid var(--light);
+  outline: none;
+
+  background-color: var(--light);
+}
+textarea:focus {
+  border: 4px solid var(--primary);
+}
+
+/* mobile */
+@media screen and (max-width: 1050px) {
+  body {
+    margin: 2rem 1rem;
+  }
+}
+@media screen and (max-width: 500px) {
+  header p,
+  header a {
+    font-size: 14px;
+  }
+  section p {
+    font-size: 25px;
+  }
+}
