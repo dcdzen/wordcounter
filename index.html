@@ -16,15 +16,26 @@
       <section>
         <p>
           Word:
-          <span id="word" onchange="getInput()">n</span> <br />
+          <span id="word" onchange="getInput()">N</span> <br />
           Character:
-          <span id="char" onchange="getInput()">n</span>
+          <span id="char" onchange="getInput()">N</span>
           <br />
           <span class="info">Click Everywhere After Input (tombol clear sama copy masih error)</span>
         </p>
         <div>
-          <button class="clear" onclick="copyInput()"><i class="fa fa-trash" aria-hidden="true"></i> clear</button>
-          <button class="copy" onclick="copyInput()"><i class="fa fa-clipboard" aria-hidden="true"></i> copy</button>
+          <button class="clear" type="reset"><i class="fa fa-trash" aria-hidden="true"></i> clear</button>
+
+          <button class="copy" type="button" onclick="copyInput()"><i class="fa fa-clipboard" aria-hidden="true"></i> copy</button>
+
+          <button class="text-uppercase" type="button"><i class="fa fa-font" aria-hidden="true"></i> up</button>
+
+          <button class="text-lowercase" type="button"><i class="fa fa-font" aria-hidden="true"></i> low</button>
+
+          <button class="text-titlecase" type="button"><i class="fa fa-font" aria-hidden="true"></i> title</button>
+
+          <button class="text-sentececase" type="button"><i class="fa fa-font" aria-hidden="true"></i> sentece</button>
+
+          <span class="tooltip"></span>
         </div>
         <textarea id="subject" name="subject" placeholder="Paste here..." onblur="getInput()"></textarea>
       </section>

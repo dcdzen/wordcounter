@@ -9,7 +9,7 @@
 body {
   background-color: var(--toodark);
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-  margin: 2rem 20rem;
+  margin: 2rem 14rem;
 }
 
 p,
@@ -104,8 +104,34 @@ textarea:focus {
   border: 4px solid var(--primary);
 }
 
+/* tooltips */
+.tooltip {
+  visibility: hidden;
+  opacity: 0;
+  width: 100px;
+  background-color: var(--light);
+  color: var(--dark);
+  text-align: center;
+  border-bottom-left-radius: 8px;
+  border-top-right-radius: 8px;
+  padding: 5px 0;
+  font-size: 14px;
+
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 1;
+
+  transition: all 0.2s ease-in-out;
+}
+
+.tooltip.hide {
+  visibility: visible;
+  opacity: 1;
+}
+
 /* mobile */
-@media screen and (max-width: 1050px) {
+@media screen and (max-width: 800px) {
   body {
     margin: 2rem 1rem;
   }
