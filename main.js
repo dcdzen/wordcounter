@@ -13,16 +13,83 @@ const sentececase = document.querySelector(".text-sentececase");
 let tooltip = document.querySelector(".tooltip");
 
 function getInput() {
-  let countWord = subject.value.trim().split(/\s+/).length;
-  let countChar = subject.value.split(" ").join("").replaceAll("\n", "").length;
-  word.innerHTML = countWord;
-  char.innerHTML = countChar;
+  if (subject.value.length == 0) {
+    word.innerHTML = "0";
+    char.innerHTML = "0";
+  } else {
+    let countWord = subject.value.trim().split(/\s+/).length;
+    let countChar = subject.value.split(" ").join("").replaceAll("\n", "").length;
+    word.innerHTML = countWord;
+    char.innerHTML = countChar;
+  }
 }
 
 function copyInput() {
   navigator.clipboard.writeText(subject.value);
 }
 
+function caseChange() {
+  let optionCase = document.getElementById("optionCase").value;
+  console.log(optionCase);
+  // uppercase
+  if (optionCase == 1) {
+    subject.value = subject.value.toLocaleUpperCase();
+    tooltip.classList.add("hide");
+    tooltip.innerHTML = "Uppercase!";
+
+    setTimeout(function () {
+      tooltip.classList.remove("hide");
+    }, 1000);
+  }
+  // lowercase
+  else if (optionCase == 2) {
+    subject.value = subject.value.toLowerCase();
+    tooltip.classList.add("hide");
+    tooltip.innerHTML = "Lowcase!";
+
+    setTimeout(function () {
+      tooltip.classList.remove("hide");
+    }, 1000);
+  }
+  // title
+  else if (optionCase == 3) {
+    subject.value = subject.value.toLowerCase();
+    let wordTitle = subject.value.trim().split(/\s+/);
+    for (let i = 0; i < wordTitle.length; i++) {
+      wordTitle[i] = wordTitle[i][0].toLocaleUpperCase() + wordTitle[i].substr(1);
+    }
+
+    subject.value = wordTitle.join(" ");
+
+    tooltip.classList.add("hide");
+    tooltip.innerHTML = "Title!";
+
+    setTimeout(function () {
+      tooltip.classList.remove("hide");
+    }, 1000);
+  }
+  // sentece
+  else if (optionCase == 4) {
+    subject.value = subject.value.toLowerCase();
+    let dotSplit = subject.value.split(".");
+    for (let i = 0; i < dotSplit.length; i++) {
+      let wordCap = dotSplit[i].trim().split(/\s+/);
+      for (let j = 0; j < wordCap.length; j++) {
+        wordCap[0] = wordCap[j][0].toLocaleUpperCase() + wordCap[j].substr(1);
+      }
+      dotSplit[i] = wordCap.join(" ");
+    }
+    subject.value = dotSplit.join(". ");
+
+    tooltip.classList.add("hide");
+    tooltip.innerHTML = "Sentece!";
+
+    setTimeout(function () {
+      tooltip.classList.remove("hide");
+    }, 1000);
+  }
+}
+// copy
 copy.addEventListener("click", function () {
   tooltip.classList.add("hide");
   tooltip.innerHTML = "Copied!";
@@ -31,9 +98,11 @@ copy.addEventListener("click", function () {
     tooltip.classList.remove("hide");
   }, 1000);
 });
-
+// clear
 clear.addEventListener("click", function () {
   tooltip.classList.add("hide");
+  word.innerHTML = "0";
+  char.innerHTML = "0";
   tooltip.innerHTML = "Clear!";
 
   setTimeout(function () {
@@ -41,57 +110,59 @@ clear.addEventListener("click", function () {
   }, 1000);
 });
 
-uppercase.addEventListener("click", function () {
-  subject.value = subject.value.toLocaleUpperCase();
-  tooltip.classList.add("hide");
-  tooltip.innerHTML = "Uppercase!";
+// uppercase.addEventListener("click", function () {
+//   subject.value = subject.value.toLocaleUpperCase();
+//   tooltip.classList.add("hide");
+//   tooltip.innerHTML = "Uppercase!";
 
-  setTimeout(function () {
-    tooltip.classList.remove("hide");
-  }, 1000);
-});
+//   setTimeout(function () {
+//     tooltip.classList.remove("hide");
+//   }, 1000);
+// });
 
-lowercase.addEventListener("click", function () {
-  subject.value = subject.value.toLowerCase();
-  tooltip.classList.add("hide");
-  tooltip.innerHTML = "Lowcase!";
+// lowercase.addEventListener("click", function () {
+//   subject.value = subject.value.toLowerCase();
+//   tooltip.classList.add("hide");
+//   tooltip.innerHTML = "Lowcase!";
 
-  setTimeout(function () {
-    tooltip.classList.remove("hide");
-  }, 1000);
-});
+//   setTimeout(function () {
+//     tooltip.classList.remove("hide");
+//   }, 1000);
+// });
 
-titlecase.addEventListener("click", function () {
-  let wordTitle = subject.value.split(" ");
-  for (let i = 0; i < wordTitle.length; i++) {
-    wordTitle[i] = wordTitle[i][0].toLocaleUpperCase() + wordTitle[i].substr(1);
-  }
-  wordTitle.join(" ");
+// titlecase.addEventListener("click", function () {
+//   subject.value = subject.value.toLowerCase();
+//   let wordTitle = subject.value.trim().split(/\s+/);
+//   for (let i = 0; i < wordTitle.length; i++) {
+//     wordTitle[i] = wordTitle[i][0].toLocaleUpperCase() + wordTitle[i].substr(1);
+//   }
 
-  subject.value = wordTitle.join(" ");
+//   subject.value = wordTitle.join(" ");
 
-  tooltip.classList.add("hide");
-  tooltip.innerHTML = "Title!";
+//   tooltip.classList.add("hide");
+//   tooltip.innerHTML = "Title!";
 
-  setTimeout(function () {
-    tooltip.classList.remove("hide");
-  }, 1000);
-});
+//   setTimeout(function () {
+//     tooltip.classList.remove("hide");
+//   }, 1000);
+// });
 
-sentececase.addEventListener("click", function () {
-  let wordCap = subject.value.split(" ");
-  for (let i = 0; i < wordCap.length; i++) {
-    wordCap[0] = wordCap[i][0].toLocaleUpperCase() + wordCap[i].substr(1);
-  }
-  wordCap.join(" ");
+// sentececase.addEventListener("click", function () {
+//   subject.value = subject.value.toLowerCase();
+//   let dotSplit = subject.value.split(".");
+//   for (let i = 0; i < dotSplit.length; i++) {
+//     let wordCap = dotSplit[i].trim().split(/\s+/);
+//     for (let j = 0; j < wordCap.length; j++) {
+//       wordCap[0] = wordCap[j][0].toLocaleUpperCase() + wordCap[j].substr(1);
+//     }
+//     dotSplit[i] = wordCap.join(" ");
+//   }
+//   subject.value = dotSplit.join(". ");
 
-  subject.value = wordCap.join(" ");
-  console.log(wordCap);
+//   tooltip.classList.add("hide");
+//   tooltip.innerHTML = "Sentece!";
 
-  tooltip.classList.add("hide");
-  tooltip.innerHTML = "Sentece!";
-
-  setTimeout(function () {
-    tooltip.classList.remove("hide");
-  }, 1000);
-});
+//   setTimeout(function () {
+//     tooltip.classList.remove("hide");
+//   }, 1000);
+// });

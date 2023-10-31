@@ -14,26 +14,32 @@
     </header>
     <form action="" method="POST">
       <section>
-        <p>
-          Word:
-          <span id="word" onchange="getInput()">N</span> <br />
-          Character:
-          <span id="char" onchange="getInput()">N</span>
-          <br />
-          <span class="info">click outside of the text box after input</span>
-        </p>
+        <p>Word: <span id="word" onchange="getInput()">0</span></p>
+        <p>Character: <span id="char" onchange="getInput()">0</span></p>
+        <p><span class="info">click outside of the text box after input</span></p>
         <div>
-          <button class="clear" type="reset"><i class="fa fa-trash" aria-hidden="true"></i> clear</button>
+          <button class="clear" type="reset"><i class="fa fa-trash" aria-hidden="true"></i></button>
 
-          <button class="copy" type="button" onclick="copyInput()"><i class="fa fa-clipboard" aria-hidden="true"></i> copy</button>
+          <button class="copy" type="button" onclick="copyInput()"><i class="fa fa-clipboard" aria-hidden="true"></i></button>
 
-          <button class="text-uppercase" type="button"><i class="fa fa-font" aria-hidden="true"></i> up</button>
+          <span class="case">
+            <i class="fa fa-font" aria-hidden="true"></i>
+            <select id="optionCase" onchange="caseChange()">
+              <option value="0">case</option>
+              <option value="1">Uppercase</option>
+              <option value="2">lowercase</option>
+              <option value="3">Title Case</option>
+              <option value="4">Sentece case</option>
+            </select>
+          </span>
+
+          <!-- <button class="text-uppercase" type="button"><i class="fa fa-font" aria-hidden="true"></i> up</button>
 
           <button class="text-lowercase" type="button"><i class="fa fa-font" aria-hidden="true"></i> low</button>
 
           <button class="text-titlecase" type="button"><i class="fa fa-font" aria-hidden="true"></i> title</button>
 
-          <button class="text-sentececase" type="button"><i class="fa fa-font" aria-hidden="true"></i> sentece</button>
+          <button class="text-sentececase" type="button"><i class="fa fa-font" aria-hidden="true"></i> sentece</button> -->
 
           <span class="tooltip"></span>
         </div>

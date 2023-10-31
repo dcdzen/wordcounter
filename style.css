@@ -58,15 +58,14 @@ section {
 
 section p {
   font-size: 2rem;
-  padding: 20px;
   font-weight: bold;
-  line-height: 36px;
 }
 .info {
   color: var(--light);
   font-size: 14px;
 }
 section div {
+  margin-top: 20px;
   background-color: var(--light);
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
@@ -76,14 +75,28 @@ section div {
 section button {
   text-align: center;
   align-items: center;
-  padding: 0.8rem;
   outline: none;
   border: none;
   background-color: var(--light);
   color: var(--toodark);
   cursor: pointer;
 }
-section button:hover {
+section select {
+  background-color: transparent;
+  outline: none;
+  border: none;
+  width: fit-content;
+}
+section select option:nth-child(1) {
+  display: none;
+}
+section .case {
+  display: flex;
+  align-items: center;
+  text-align: left;
+}
+section button:hover,
+.case:hover {
   background-color: var(--primary);
 }
 
@@ -130,6 +143,18 @@ textarea:focus {
   opacity: 1;
 }
 
+section .fa {
+  font-size: 14px;
+
+  padding: 0.4rem;
+}
+.clear::after {
+  content: "clear";
+}
+.copy::after {
+  content: "copy";
+}
+
 /* mobile */
 @media screen and (max-width: 800px) {
   body {
@@ -143,5 +168,12 @@ textarea:focus {
   }
   section p {
     font-size: 25px;
+  }
+
+  .clear::after {
+    content: "";
+  }
+  .copy::after {
+    content: "";
   }
 }
