@@ -12,16 +12,23 @@ const sentececase = document.querySelector(".text-sentececase");
 
 let tooltip = document.querySelector(".tooltip");
 
+// get + show save item
+const data = sessionStorage.getItem("value");
+subject.innerText = data;
+
+let countWord = data.trim().split(/\s+/).length;
+let countChar = data.split(" ").join("").replaceAll("\n", "").length;
+word.innerHTML = countWord;
+char.innerHTML = countChar;
+
 function getInput() {
-  if (subject.value.length == 0) {
-    word.innerHTML = "0";
-    char.innerHTML = "0";
-  } else {
-    let countWord = subject.value.trim().split(/\s+/).length;
-    let countChar = subject.value.split(" ").join("").replaceAll("\n", "").length;
-    word.innerHTML = countWord;
-    char.innerHTML = countChar;
-  }
+  let countWord = subject.value.trim().split(/\s+/).length;
+  let countChar = subject.value.split(" ").join("").replaceAll("\n", "").length;
+  word.innerHTML = countWord;
+  char.innerHTML = countChar;
+
+  // save item
+  sessionStorage.setItem("value", subject.value);
 }
 
 function copyInput() {
