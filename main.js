@@ -27,7 +27,10 @@ function getInput() {
   word.innerHTML = countWord;
   char.innerHTML = countChar;
 
-  // save item
+  saveInput();
+}
+
+function saveInput() {
   sessionStorage.setItem("value", subject.value);
 }
 
@@ -44,6 +47,8 @@ function caseChange() {
     tooltip.classList.add("hide");
     tooltip.innerHTML = "Uppercase!";
 
+    saveInput();
+
     setTimeout(function () {
       tooltip.classList.remove("hide");
     }, 1000);
@@ -53,6 +58,8 @@ function caseChange() {
     subject.value = subject.value.toLowerCase();
     tooltip.classList.add("hide");
     tooltip.innerHTML = "Lowcase!";
+
+    saveInput();
 
     setTimeout(function () {
       tooltip.classList.remove("hide");
@@ -70,6 +77,8 @@ function caseChange() {
 
     tooltip.classList.add("hide");
     tooltip.innerHTML = "Title!";
+
+    saveInput();
 
     setTimeout(function () {
       tooltip.classList.remove("hide");
@@ -91,6 +100,8 @@ function caseChange() {
     tooltip.classList.add("hide");
     tooltip.innerHTML = "Sentece!";
 
+    saveInput();
+
     setTimeout(function () {
       tooltip.classList.remove("hide");
     }, 1000);
@@ -108,9 +119,12 @@ copy.addEventListener("click", function () {
 // clear
 clear.addEventListener("click", function () {
   tooltip.classList.add("hide");
+  tooltip.innerHTML = "Clear!";
+
+  subject.innerText = "";
+  sessionStorage.removeItem("value");
   word.innerHTML = "0";
   char.innerHTML = "0";
-  tooltip.innerHTML = "Clear!";
 
   setTimeout(function () {
     tooltip.classList.remove("hide");
