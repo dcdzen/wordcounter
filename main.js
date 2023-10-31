@@ -22,12 +22,16 @@ word.innerHTML = countWord;
 char.innerHTML = countChar;
 
 function getInput() {
-  let countWord = subject.value.trim().split(/\s+/).length;
-  let countChar = subject.value.split(" ").join("").replaceAll("\n", "").length;
-  word.innerHTML = countWord;
-  char.innerHTML = countChar;
+  if (subject.value.length == 0) {
+    removeInput();
+  } else {
+    let countWord = subject.value.trim().split(/\s+/).length;
+    let countChar = subject.value.split(" ").join("").replaceAll("\n", "").length;
+    word.innerHTML = countWord;
+    char.innerHTML = countChar;
 
-  saveInput();
+    saveInput();
+  }
 }
 
 function saveInput() {
@@ -117,14 +121,17 @@ copy.addEventListener("click", function () {
   }, 1000);
 });
 // clear
-clear.addEventListener("click", function () {
-  tooltip.classList.add("hide");
-  tooltip.innerHTML = "Clear!";
-
+function removeInput() {
   subject.innerText = "";
   sessionStorage.removeItem("value");
   word.innerHTML = "0";
   char.innerHTML = "0";
+}
+clear.addEventListener("click", function () {
+  tooltip.classList.add("hide");
+  tooltip.innerHTML = "Clear!";
+
+  removeInput();
 
   setTimeout(function () {
     tooltip.classList.remove("hide");
