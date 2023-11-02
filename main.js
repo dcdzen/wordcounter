@@ -42,6 +42,34 @@ function copyInput() {
   navigator.clipboard.writeText(subject.value);
 }
 
+function removeInput() {
+  subject.value = "";
+  sessionStorage.removeItem("value");
+  word.innerHTML = "0";
+  char.innerHTML = "0";
+}
+
+// copy
+copy.addEventListener("click", function () {
+  tooltip.classList.add("hide");
+  tooltip.innerHTML = "Copied!";
+
+  setTimeout(function () {
+    tooltip.classList.remove("hide");
+  }, 1000);
+});
+// clear
+clear.addEventListener("click", function () {
+  tooltip.classList.add("hide");
+  tooltip.innerHTML = "Clear!";
+
+  removeInput();
+
+  setTimeout(function () {
+    tooltip.classList.remove("hide");
+  }, 1000);
+});
+
 function caseChange() {
   let optionCase = document.getElementById("optionCase").value;
   console.log(optionCase);
@@ -111,32 +139,6 @@ function caseChange() {
     }, 1000);
   }
 }
-// copy
-copy.addEventListener("click", function () {
-  tooltip.classList.add("hide");
-  tooltip.innerHTML = "Copied!";
-
-  setTimeout(function () {
-    tooltip.classList.remove("hide");
-  }, 1000);
-});
-// clear
-function removeInput() {
-  subject.innerText = "";
-  sessionStorage.removeItem("value");
-  word.innerHTML = "0";
-  char.innerHTML = "0";
-}
-clear.addEventListener("click", function () {
-  tooltip.classList.add("hide");
-  tooltip.innerHTML = "Clear!";
-
-  removeInput();
-
-  setTimeout(function () {
-    tooltip.classList.remove("hide");
-  }, 1000);
-});
 
 // uppercase.addEventListener("click", function () {
 //   subject.value = subject.value.toLocaleUpperCase();
