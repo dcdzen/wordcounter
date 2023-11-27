@@ -115,6 +115,10 @@ textarea {
 textarea:focus {
   border: 4px solid var(--primary);
 }
+.flet::first-letter {
+  font-size: 200%;
+  color: #8a2be2;
+}
 
 /* tooltips */
 .tooltip {

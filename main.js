@@ -72,7 +72,6 @@ clear.addEventListener("click", function () {
 
 function caseChange() {
   let optionCase = document.getElementById("optionCase").value;
-  console.log(optionCase);
   // uppercase
   if (optionCase == 1) {
     subject.value = subject.value.toLocaleUpperCase();
@@ -119,15 +118,18 @@ function caseChange() {
   // sentece
   else if (optionCase == 4) {
     subject.value = subject.value.toLowerCase();
-    let dotSplit = subject.value.split(".");
+    let dotSplit = subject.value.split(". ");
+    let capitalizedSentences = [];
+
     for (let i = 0; i < dotSplit.length; i++) {
-      let wordCap = dotSplit[i].trim().split(/\s+/);
-      for (let j = 0; j < wordCap.length; j++) {
-        wordCap[0] = wordCap[j][0].toLocaleUpperCase() + wordCap[j].substr(1);
-      }
-      dotSplit[i] = wordCap.join(" ");
+      let wordCap = dotSplit[i].trim();
+      let firstWord = wordCap.charAt(0).toUpperCase() + wordCap.slice(1);
+      capitalizedSentences.push(firstWord);
     }
-    subject.value = dotSplit.join(". ");
+
+    let joinedSentences = capitalizedSentences.join(". ");
+
+    subject.value = joinedSentences;
 
     tooltip.classList.add("hide");
     tooltip.innerHTML = "Sentece!";
